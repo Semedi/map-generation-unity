@@ -15,7 +15,8 @@ public class GameManager : MonoBehaviour
 
     private Text levelText;                                 //Text to display current level number.
     private GameObject levelImage;                          //Image to block out level as levels are being set up, background for levelText.
-    private BoardManager boardScript;                       //Store a reference to our BoardManager which will set up the level.
+    //private BoardManager boardScript;                       //Store a reference to our BoardManager which will set up the level.
+    private BoardCreator boardScript;
     private int level = 1;                                  //Current level number, expressed in game as "Day 1".
    // private List<Enemy> enemies;                            //List of all Enemy units, used to issue them move commands.
     private bool enemiesMoving;                             //Boolean to check if enemies are moving.
@@ -45,7 +46,7 @@ public class GameManager : MonoBehaviour
        // enemies = new List<Enemy>();
 
         //Get a component reference to the attached BoardManager script
-        boardScript = GetComponent<BoardManager>();
+        boardScript = GetComponent<BoardCreator>();
 
         //Call the InitGame function to initialize the first level 
         InitGame();
@@ -96,7 +97,7 @@ public class GameManager : MonoBehaviour
 
 
         //Call the SetupScene function of the BoardManager script, pass it current level number.
-        boardScript.SetupScene(level);
+        boardScript.init();
 
     }
 
